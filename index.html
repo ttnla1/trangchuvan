@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="vi" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo Dự Án Học Sinh</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;family=Cormorant+Garamond:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    .newspaper-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    .body-text {
+      font-family: 'Merriweather', serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .ornament {
+      background: linear-gradient(90deg, transparent 0%, currentColor 50%, transparent 100%);
+      height: 2px;
+    }
+    .double-line {
+      border-top: 3px double currentColor;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    .project-card {
+      transition: all 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto" style="background-color: #f0f4f8;">
+  <div class="min-h-full w-full" style="background: linear-gradient(180deg, #f0f4f8 0%, #e8eff7 100%);"><!-- Newspaper Container -->
+   <div class="max-w-5xl mx-auto px-4 py-8"><!-- Header Section -->
+    <header class="text-center mb-6 animate-in" style="animation-delay: 0.1s;"><!-- Top ornamental line -->
+     <div class="flex items-center justify-center gap-4 mb-4">
+      <div class="h-px flex-1 max-w-32" style="background-color: #4a7c9e;"></div><span class="text-2xl" style="color: #4a7c9e;">✦</span>
+      <div class="h-px flex-1 max-w-32" style="background-color: #4a7c9e;"></div>
+     </div><!-- Newspaper Title -->
+     <h1 id="newspaper-title" class="newspaper-title text-5xl md:text-7xl tracking-wide mb-2" style="color: #2c5282;">Báo Dự Án Học Sinh</h1><!-- Subtitle -->
+     <p class="body-text italic text-sm mb-3" style="color: #5a7a92;">"Sáng tạo từ thế hệ trẻ - Vì tương lai xanh"</p><!-- Double line -->
+     <div class="double-line max-w-2xl mx-auto mb-3" style="border-color: #4a7c9e;"></div><!-- Date and Info Bar -->
+     <div class="flex flex-wrap justify-center items-center gap-4 text-xs body-text" style="color: #5a7a92;"><span>📅 Năm học 2024 - 2025</span> <span>•</span> <span id="school-info">THPT Nguyễn Khuyến, Phường Hòa Hưng</span> <span>•</span> <span>Số đặc biệt</span>
+     </div>
+    </header><!-- Main Content -->
+    <main class="space-y-8"><!-- Teacher Section -->
+     <section class="animate-in" style="animation-delay: 0.2s;">
+      <div class="text-center p-6 border-2" style="border-color: #6b9abe; background-color: rgba(107, 154, 190, 0.1);">
+       <div class="flex items-center justify-center gap-3 mb-2">
+        <div class="w-8 h-px" style="background-color: #6b9abe;"></div><span class="headline text-sm uppercase tracking-widest" style="color: #4a7c9e;">Giáo viên hướng dẫn</span>
+        <div class="w-8 h-px" style="background-color: #6b9abe;"></div>
+       </div>
+       <h2 id="teacher-name" class="headline text-3xl font-bold" style="color: #2c5282;">Nguyễn Tuấn Anh</h2>
+       <p class="body-text text-sm mt-2" style="color: #5a7a92;">Người dẫn dắt các em học sinh thực hiện những dự án ý nghĩa</p>
+      </div>
+     </section><!-- Classes Info -->
+     <section class="animate-in" style="animation-delay: 0.3s;">
+      <div class="flex flex-wrap justify-center gap-6">
+       <div class="flex items-center gap-2 px-6 py-3 border" style="border-color: #4a7c9e; background-color: #f5f9fc;"><span class="text-2xl">🎓</span> <span class="headline font-bold text-lg" style="color: #2c5282;">Lớp 11A1</span>
+       </div>
+       <div class="flex items-center gap-2 px-6 py-3 border" style="border-color: #4a7c9e; background-color: #f5f9fc;"><span class="text-2xl">🎓</span> <span class="headline font-bold text-lg" style="color: #2c5282;">Lớp 11D2</span>
+       </div>
+      </div>
+     </section><!-- Headline Banner -->
+     <section class="animate-in" style="animation-delay: 0.4s;">
+      <div class="text-center py-4 border-t-4 border-b-4" style="border-color: #2c5282;">
+       <h2 class="headline text-2xl md:text-4xl font-black uppercase tracking-wider" style="color: #2c5282;">Các Dự Án Nổi Bật</h2>
+       <p class="body-text text-sm mt-2 italic" style="color: #5a7a92;">Những sản phẩm sáng tạo từ học sinh hai lớp 11A1 và 11D2</p>
+      </div>
+     </section><!-- Projects Grid -->
+     <section class="grid md:grid-cols-2 gap-6"><!-- Project 1: Boardgame -->
+      <article class="project-card animate-in border-2 p-6" style="animation-delay: 0.5s; border-color: #4a7c9e; background-color: #fafcfe;">
+       <div class="mb-4"><span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider" style="background-color: #6b9abe; color: #fff;"> Dự án 1 </span>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="text-5xl">
+         🎲
+        </div>
+        <div class="flex-1">
+         <h3 class="headline text-xl font-bold mb-2" style="color: #2c5282;">Boardgame: Dấu chân của sao non</h3>
+         <p class="body-text text-sm leading-relaxed mb-4" style="color: #5a7a92;">Trò chơi board game giáo dục, giúp người chơi khám phá hành trình trưởng thành và những bước chân đầu tiên trên con đường phát triển bền vững.</p><a href="https://ttnla1.github.io/boardgameA1/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm uppercase tracking-wide transition-all hover:scale-105" style="background-color: #6b9abe; color: #fff;"> <span>Xem dự án</span> <span>→</span> </a>
+        </div>
+       </div>
+      </article><!-- Project 2: Lịch sinh thái -->
+      <article class="project-card animate-in border-2 p-6" style="animation-delay: 0.6s; border-color: #4a7c9e; background-color: #fafcfe;">
+       <div class="mb-4"><span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider" style="background-color: #7ca394; color: #fff;"> Dự án 2 </span>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="text-5xl">
+         📅
+        </div>
+        <div class="flex-1">
+         <h3 class="headline text-xl font-bold mb-2" style="color: #2c5282;">Lịch - Lối về sinh thái</h3>
+         <p class="body-text text-sm leading-relaxed mb-4" style="color: #5a7a92;">Bộ lịch sáng tạo với thông điệp bảo vệ môi trường, đưa người xem trở về với thiên nhiên và ý thức hơn về lối sống xanh, bền vững.</p><a href="https://ttnla1.github.io/lichA1/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm uppercase tracking-wide transition-all hover:scale-105" style="background-color: #7ca394; color: #fff;"> <span>Xem dự án</span> <span>→</span> </a>
+        </div>
+       </div>
+      </article><!-- Project 3: ABCD -->
+      <article class="project-card animate-in border-2 p-6" style="animation-delay: 0.7s; border-color: #4a7c9e; background-color: #fafcfe;">
+       <div class="mb-4"><span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider" style="background-color: #8b9dc3; color: #fff;"> Dự án 3 </span>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="text-5xl">
+         📘
+        </div>
+        <div class="flex-1">
+         <h3 class="headline text-xl font-bold mb-2" style="color: #2c5282;">ABCD</h3>
+         <p class="body-text text-sm leading-relaxed mb-4" style="color: #5a7a92;">Dự án sáng tạo độc đáo từ học sinh, mang đến những ý tưởng mới mẻ và góc nhìn trẻ trung về các vấn đề trong cuộc sống.</p><a href="https://ttnla1.github.io/abcdA1/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm uppercase tracking-wide transition-all hover:scale-105" style="background-color: #8b9dc3; color: #fff;"> <span>Xem dự án</span> <span>→</span> </a>
+        </div>
+       </div>
+      </article><!-- Project 4: CDRS -->
+      <article class="project-card animate-in border-2 p-6" style="animation-delay: 0.8s; border-color: #4a7c9e; background-color: #fafcfe;">
+       <div class="mb-4"><span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider" style="background-color: #9fa8c4; color: #fff;"> Dự án 4 </span>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="text-5xl">
+         🌟
+        </div>
+        <div class="flex-1">
+         <h3 class="headline text-xl font-bold mb-2" style="color: #2c5282;">CDRS</h3>
+         <p class="body-text text-sm leading-relaxed mb-4" style="color: #5a7a92;">Một dự án đầy tâm huyết từ các bạn học sinh, thể hiện sự sáng tạo và tinh thần đổi mới của thế hệ trẻ ngày nay.</p><a href="https://ttnla1.github.io/cdrsA1/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm uppercase tracking-wide transition-all hover:scale-105" style="background-color: #9fa8c4; color: #fff;"> <span>Xem dự án</span> <span>→</span> </a>
+        </div>
+       </div>
+      </article>
+     </section><!-- Footer -->
+     <footer class="animate-in text-center pt-8 border-t-2" style="animation-delay: 0.9s; border-color: #4a7c9e;">
+      <div class="flex items-center justify-center gap-4 mb-4">
+       <div class="w-12 h-px" style="background-color: #6b9abe;"></div><span class="text-xl" style="color: #6b9abe;">❦</span>
+       <div class="w-12 h-px" style="background-color: #6b9abe;"></div>
+      </div>
+      <p class="body-text text-sm" style="color: #5a7a92;">© 2024-2025 | Trường THPT Nguyễn Khuyến</p>
+      <p class="body-text text-xs mt-2 italic" style="color: #6b8fa8;">Sản phẩm được thực hiện bởi học sinh lớp 11A1 &amp; 11D2 dưới sự hướng dẫn của thầy Nguyễn Tuấn Anh</p>
+      <div class="mt-6 pb-4"><span class="headline text-xs uppercase tracking-widest" style="color: #6b9abe;"> ✦ Hết ✦ </span>
+      </div>
+     </footer>
+    </main>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      newspaper_title: 'Báo Dự Án Học Sinh',
+      teacher_name: 'Nguyễn Tuấn Anh',
+      school_info: 'THPT Nguyễn Khuyến, Phường Hòa Hưng',
+      background_color: '#f0f4f8',
+      text_color: '#2c5282',
+      accent_color: '#4a7c9e',
+      card_color: '#fafcfe',
+      font_family: 'Cormorant Garamond',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      // Update newspaper title
+      const titleEl = document.getElementById('newspaper-title');
+      if (titleEl) {
+        titleEl.textContent = config.newspaper_title || defaultConfig.newspaper_title;
+      }
+
+      // Update teacher name
+      const teacherEl = document.getElementById('teacher-name');
+      if (teacherEl) {
+        teacherEl.textContent = config.teacher_name || defaultConfig.teacher_name;
+      }
+
+      // Update school info
+      const schoolEl = document.getElementById('school-info');
+      if (schoolEl) {
+        schoolEl.textContent = config.school_info || defaultConfig.school_info;
+      }
+
+      // Update colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const cardColor = config.card_color || defaultConfig.card_color;
+
+      document.body.style.backgroundColor = bgColor;
+      
+      // Update headline elements
+      document.querySelectorAll('.headline').forEach(el => {
+        if (!el.closest('a')) {
+          el.style.color = textColor;
+        }
+      });
+
+      // Update font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'serif';
+      document.querySelectorAll('.headline').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      });
+
+      // Update font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.querySelectorAll('.body-text').forEach(el => {
+        el.style.fontSize = `${baseSize * 0.875}px`;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['newspaper_title', config.newspaper_title || defaultConfig.newspaper_title],
+        ['teacher_name', config.teacher_name || defaultConfig.teacher_name],
+        ['school_info', config.school_info || defaultConfig.school_info]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d3d202564003ded',t:'MTc3MjA4NDYxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
