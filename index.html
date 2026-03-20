@@ -25,9 +25,13 @@
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
     }
-    @keyframes quillWrite {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
+    @keyframes fadeInOut {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
     }
     .float-icon { animation: floatIcon 4s ease-in-out infinite; }
     .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
@@ -93,6 +97,30 @@
       line-height: 1;
       opacity: 0.15;
     }
+    .tab-content {
+      animation: fadeInOut 0.5s ease-out forwards;
+    }
+    .tab-content.hidden {
+      display: none;
+    }
+    .tab-btn {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #4a7fb5, #3a6d99) !important;
+      color: white !important;
+      border-color: #4a7fb5 !important;
+      box-shadow: 0 4px 12px rgba(74, 127, 181, 0.3);
+    }
+    .tab-btn.inactive {
+      background: transparent !important;
+      color: #4a7fb5 !important;
+      border-color: #7bafd4 !important;
+    }
+    .tab-btn.inactive:hover {
+      background: rgba(74, 127, 181, 0.05) !important;
+    }
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -152,105 +180,228 @@
     </header><!-- Subtitle banner -->
     <div class="text-center mb-10 fade-in-up" style="animation-delay:0.3s">
      <p class="text-lg italic" style="color: #4a7fb5; font-family: 'Dancing Script', cursive; font-size: 1.4rem;">✦ Bốn dự án — Bốn sắc màu — Một tình yêu văn chương ✦</p>
-    </div><!-- Project cards grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"><!-- Project 1: Boardgame -->
-     <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.4s; background: linear-gradient(145deg, #fefcf3, #fdf6e3, #fef9ed); border-color: #e8d5a3;">
-      <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
-       <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#b8960c" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" />
-       </svg>
-      </div>
-      <div class="p-6 relative z-10">
-       <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #f5e6b8; color: #8b6914; font-family: 'Lora', serif;">Dự án 1</span> <span class="text-xl">🎲</span>
+    </div><!-- Navigation tabs -->
+    <div class="flex justify-center gap-3 mb-10 fade-in-up flex-wrap" style="animation-delay:0.35s"><button id="tab-projects" class="tab-btn active px-6 py-3 rounded-full font-bold transition-all duration-300" style="border: 2px solid #4a7fb5; font-family: 'Lora', serif; box-shadow: 0 4px 12px rgba(74, 127, 181, 0.3);">📚 Các Dự Án</button> <button id="tab-timeline" class="tab-btn inactive px-6 py-3 rounded-full font-bold transition-all duration-300" style="border: 2px solid #7bafd4; font-family: 'Lora', serif;">📅 Lịch Trình</button>
+    </div><!-- TAB 1: Projects Page -->
+    <section id="content-projects" class="tab-content"><!-- Project cards grid -->
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"><!-- Project 1: Boardgame -->
+      <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.4s; background: linear-gradient(145deg, #fefcf3, #fdf6e3, #fef9ed); border-color: #e8d5a3;">
+       <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
+        <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#b8960c" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" />
+        </svg>
        </div>
-       <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #6b4f0a;">Boardgame: Dấu chân của sao non</h2>
-       <p class="text-xs italic mb-1" style="color: #6b4f0a; font-family: 'Dancing Script', cursive; font-size: 1rem;">Được thực hiện bởi lớp 11A1</p>
-       <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #e8d5a3, #c4a44a, #e8d5a3, transparent);"></div>
-       <p class="text-sm mb-4 leading-relaxed" style="color: #7a6321; font-family: 'Lora', serif;">Hành trình khám phá văn chương qua trò chơi boardgame sáng tạo, nơi mỗi bước đi là một trang sách mới mở ra.</p>
-       <div class="flex items-center justify-between">
-        <div class="flex gap-1 text-lg" aria-hidden="true">
-         ⭐🌟✨
-        </div><a href="https://ttnla1.github.io/boardgameA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #c4a44a, #a8892e); font-family: 'Lora', serif;"> Khám phá 
-         <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-         </svg></a>
+       <div class="p-6 relative z-10">
+        <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #f5e6b8; color: #8b6914; font-family: 'Lora', serif;">Dự án 1</span> <span class="text-xl">🎲</span>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #6b4f0a;">Boardgame: Dấu chân của sao non</h2>
+        <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #e8d5a3, #c4a44a, #e8d5a3, transparent);"></div>
+        <p class="text-sm mb-4 leading-relaxed" style="color: #7a6321; font-family: 'Lora', serif;">Hành trình khám phá văn chương qua trò chơi boardgame sáng tạo, nơi mỗi bước đi là một trang sách mới mở ra.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-1 text-lg" aria-hidden="true">
+          ⭐🌟✨
+         </div><a href="https://ttnla1.github.io/boardgameA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #c4a44a, #a8892e); font-family: 'Lora', serif;"> Khám phá 
+          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+           <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+        </div>
+       </div>
+      </article><!-- Project 2: Lịch -->
+      <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.55s; background: linear-gradient(145deg, #f2faf4, #e6f5ea, #edf8f0); border-color: #a3d4ad;">
+       <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
+        <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#2d8a4e" stroke-width="1"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 1 0-16 0c0 4.5 4 8 8 12z" /><circle cx="12" cy="10" r="3" />
+        </svg>
+       </div>
+       <div class="p-6 relative z-10">
+        <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #c8e6cf; color: #276738; font-family: 'Lora', serif;">Dự án 2</span> <span class="text-xl">🌿</span>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #1e5631;">Lịch: Lối về sinh thái</h2>
+        <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #a3d4ad, #4caf50, #a3d4ad, transparent);"></div>
+        <p class="text-sm mb-4 leading-relaxed" style="color: #2d6a3f; font-family: 'Lora', serif;">Lịch nghệ thuật kết hợp văn chương và ý thức sinh thái — mỗi tháng là một câu chuyện xanh từ trang sách đến cuộc đời.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-1 text-lg" aria-hidden="true">
+          🍃🌱🌳
+         </div><a href="https://ttnla1.github.io/lichA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #4caf50, #2e7d32); font-family: 'Lora', serif;"> Khám phá 
+          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+           <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+        </div>
+       </div>
+      </article><!-- Project 3: Kịch -->
+      <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.7s; background: linear-gradient(145deg, #f6f0fa, #ede3f5, #f3ecf9); border-color: #c4a8e0;">
+       <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
+        <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#7b3fa0" stroke-width="1"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" />
+        </svg>
+       </div>
+       <div class="p-6 relative z-10">
+        <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #dcc8ef; color: #5e2d82; font-family: 'Lora', serif;">Dự án 3</span> <span class="text-xl">🎭</span>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #4a1d6b;">Kịch: Tiếng vọng của những ngày qua</h2>
+        <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #c4a8e0, #9c27b0, #c4a8e0, transparent);"></div>
+        <p class="text-sm mb-4 leading-relaxed" style="color: #5e3178; font-family: 'Lora', serif;">Sân khấu tái hiện những thanh âm xưa cũ, nơi nhân vật văn học bước ra từ trang giấy để kể lại câu chuyện của mình.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-1 text-lg" aria-hidden="true">
+          🎬🌙💜
+         </div><a href="https://ttnla1.github.io/kichA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #9c27b0, #6a1b9a); font-family: 'Lora', serif;"> Khám phá 
+          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+           <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+        </div>
+       </div>
+      </article><!-- Project 4: Tập san -->
+      <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.85s; background: linear-gradient(145deg, #fdf2f6, #fbe4ee, #fceff5); border-color: #e8a8c8;">
+       <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
+        <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+       </div>
+       <div class="p-6 relative z-10">
+        <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #f3c4da; color: #8e1450; font-family: 'Lora', serif;">Dự án 4</span> <span class="text-xl">📚</span>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #7b1040;">Tập san: Dọc miền văn học</h2>
+        <p class="text-xs italic mb-1" style="color: #a44d73; font-family: 'Dancing Script', cursive; font-size: 1rem;">Lắng nghe thanh âm phương Nam</p>
+        <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #e8a8c8, #e91e63, #e8a8c8, transparent);"></div>
+        <p class="text-sm mb-4 leading-relaxed" style="color: #8e3460; font-family: 'Lora', serif;">Tập san văn chương đưa bạn đọc dọc theo miền Nam nước Việt, lắng nghe những thanh âm mộc mạc mà đậm tình.</p>
+        <div class="flex items-center justify-between">
+         <div class="flex gap-1 text-lg" aria-hidden="true">
+          🌸📖💗
+         </div><a href="https://ttnla1.github.io/tapsanA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #e91e63, #c2185b); font-family: 'Lora', serif;"> Khám phá 
+          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+           <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+        </div>
+       </div>
+      </article>
+     </div><!-- Footer for projects page -->
+     <footer class="text-center pb-8 fade-in-up" style="animation-delay:1s">
+      <div class="thick-ornament rounded-full mb-5 max-w-md mx-auto"></div>
+      <div class="flex justify-center gap-3 mb-3 text-2xl" aria-hidden="true">
+       📖 ✒️ 📝 🎓 📚
+      </div>
+      <p class="text-sm italic" style="color: #5a8cb8; font-family: 'Dancing Script', cursive; font-size: 1.1rem;">"Văn chương không chỉ để đọc, mà để cảm nhận và sống cùng"</p>
+      <p class="text-xs mt-2" style="color: #8bb8d9;">© 2025 — Dự án Văn học lớp 11A1 &amp; 11D2</p>
+     </footer>
+    </section><!-- TAB 2: Timeline Page -->
+    <section id="content-timeline" class="tab-content hidden">
+     <div class="newspaper-border rounded-lg p-6 md:p-8 bg-white/70 backdrop-blur-sm fade-in-up" style="border-color: #7bafd4; animation-delay:0.4s"><!-- Timeline header -->
+      <div class="text-center mb-8">
+       <div class="flex items-center justify-center gap-3 mb-4">
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#4a7fb5" stroke-width="2">
+         <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <h2 class="text-2xl md:text-3xl font-bold" style="font-family: 'Playfair Display', serif; color: #1e3a5f;">Lịch Trình Sự Kiện</h2>
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#4a7fb5" stroke-width="2">
+         <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+       </div>
+       <div class="ornament-line mb-6"></div>
+       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6" style="border-left: 4px solid #4a7fb5;">
+        <p class="text-lg font-bold mb-2" style="color: #1e3a5f; font-family: 'Lora', serif;">📅 Sáng thứ tư, ngày 1/4/2026</p>
+        <p class="font-semibold mb-1" style="color: #3a6d99; font-family: 'Lora', serif;">🕐 Từ 8:45 đến 10:15</p>
+        <p class="text-sm" style="color: #5a8cb8; font-family: 'Lora', serif;">📍 Hội trường — Trường THPT Nguyễn Khuyến</p>
+       </div>
+       <div class="ornament-line mb-8"></div>
+      </div><!-- Timeline vertical -->
+      <div class="relative"><!-- Timeline line -->
+       <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-1" style="background: linear-gradient(180deg, #4a7fb5 0%, #7bafd4 50%, transparent 100%); transform: translateX(-50%);"></div><!-- Timeline items -->
+       <div class="space-y-8"><!-- Item 1 -->
+        <div class="pl-20 md:pl-0 md:pr-1/2 md:text-right md:pr-14 relative fade-in-up" style="animation-delay:0.45s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #4a7fb5, #3a6d99); box-shadow: 0 0 0 4px rgba(74, 127, 181, 0.15), 0 4px 12px rgba(74, 127, 181, 0.3); z-index: 5;">
+          8:45
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:mr-3 border-l-4 md:border-l-0 md:border-r-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #7bafd4;">
+          <p class="font-bold text-base mb-1" style="color: #1e3a5f; font-family: 'Playfair Display', serif;">👋 Đón Tiếp Khách Mời</p>
+          <p class="text-sm" style="color: #5a8cb8; font-family: 'Lora', serif;">Khởi đầu ấm cúng cho sự kiện</p>
+         </div>
+        </div><!-- Item 2 -->
+        <div class="pl-20 md:pl-1/2 md:text-left md:pl-14 relative fade-in-up" style="animation-delay:0.5s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #4a7fb5, #3a6d99); box-shadow: 0 0 0 4px rgba(74, 127, 181, 0.15), 0 4px 12px rgba(74, 127, 181, 0.3); z-index: 5;">
+          9:00
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:ml-3 border-l-4 md:border-l-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #7bafd4;">
+          <p class="font-bold text-base mb-1" style="color: #1e3a5f; font-family: 'Playfair Display', serif;">🎨 Triển Lãm Mô Hình Sáng Tạo</p>
+          <p class="text-sm" style="color: #5a8cb8; font-family: 'Lora', serif;">Khách mời tham gia triển lãm các mô hình sáng tạo văn học</p>
+         </div>
+        </div><!-- Item 3 -->
+        <div class="pl-20 md:pl-0 md:pr-1/2 md:text-right md:pr-14 relative fade-in-up" style="animation-delay:0.55s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #4a7fb5, #3a6d99); box-shadow: 0 0 0 4px rgba(74, 127, 181, 0.15), 0 4px 12px rgba(74, 127, 181, 0.3); z-index: 5;">
+          9:15
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:mr-3 border-l-4 md:border-l-0 md:border-r-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #7bafd4;">
+          <p class="font-bold text-base mb-1" style="color: #1e3a5f; font-family: 'Playfair Display', serif;">🎤 Khơi Nguồn Tiếng Nói Văn Chương</p>
+          <p class="text-sm mb-2" style="color: #5a8cb8; font-family: 'Lora', serif;">Giới thiệu dự án "Lắng nghe tiếng nói văn chương"</p>
+          <div class="inline-block px-2 py-1 rounded text-xs font-semibold" style="background: #e3f2fd; color: #1565c0;">
+           Dự án chính
+          </div>
+         </div>
+        </div><!-- Item 4 -->
+        <div class="pl-20 md:pl-1/2 md:text-left md:pl-14 relative fade-in-up" style="animation-delay:0.6s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #2e7d32, #1b5e20); box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.15), 0 4px 12px rgba(46, 125, 50, 0.3); z-index: 5;">
+          9:25
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:ml-3 border-l-4 md:border-l-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #4caf50;">
+          <p class="font-bold text-base mb-1" style="color: #1b5e20; font-family: 'Playfair Display', serif;">🌿 Khi Thiên Nhiên Cất Lời</p>
+          <p class="text-sm mb-2" style="color: #2e7d32; font-family: 'Lora', serif;">Nhóm công ty NK-Xanh ra mắt bộ lịch "Lối về sinh thái"</p>
+          <div class="inline-block px-2 py-1 rounded text-xs font-semibold" style="background: #e8f5e9; color: #1b5e20;">
+           Dự án 2
+          </div>
+         </div>
+        </div><!-- Item 5 -->
+        <div class="pl-20 md:pl-0 md:pr-1/2 md:text-right md:pr-14 relative fade-in-up" style="animation-delay:0.65s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #c2185b, #880e4f); box-shadow: 0 0 0 4px rgba(194, 24, 91, 0.15), 0 4px 12px rgba(194, 24, 91, 0.3); z-index: 5;">
+          9:35
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:mr-3 border-l-4 md:border-l-0 md:border-r-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #e91e63;">
+          <p class="font-bold text-base mb-1" style="color: #880e4f; font-family: 'Playfair Display', serif;">🌸 Điệu Hồn Phương Nam</p>
+          <p class="text-sm mb-2" style="color: #c2185b; font-family: 'Lora', serif;">Nhóm lữ hành phương Nam giới thiệu tập san "Hành trình văn hoá qua các truyện ngắn của Trần Bảo Định"</p>
+          <div class="inline-block px-2 py-1 rounded text-xs font-semibold" style="background: #fce4ec; color: #880e4f;">
+           Dự án 4
+          </div>
+         </div>
+        </div><!-- Item 6 -->
+        <div class="pl-20 md:pl-1/2 md:text-left md:pl-14 relative fade-in-up" style="animation-delay:0.7s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #6a1b9a, #4a148c); box-shadow: 0 0 0 4px rgba(106, 27, 154, 0.15), 0 4px 12px rgba(106, 27, 154, 0.3); z-index: 5;">
+          9:45
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:ml-3 border-l-4 md:border-l-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #9c27b0;">
+          <p class="font-bold text-base mb-1" style="color: #4a148c; font-family: 'Playfair Display', serif;">🎭 Tiếng Vọng Của Những Ngày Qua</p>
+          <p class="text-sm mb-2" style="color: #6a1b9a; font-family: 'Lora', serif;">Nhà hát kịch "Hoài vọng" công diễn vở kịch "Mây trắng còn bay"</p>
+          <div class="inline-block px-2 py-1 rounded text-xs font-semibold" style="background: #f3e5f5; color: #4a148c;">
+           Dự án 3
+          </div>
+         </div>
+        </div><!-- Item 7 -->
+        <div class="pl-20 md:pl-0 md:pr-1/2 md:text-right md:pr-14 relative fade-in-up" style="animation-delay:0.75s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #b8860b, #8b6914); box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15), 0 4px 12px rgba(184, 134, 11, 0.3); z-index: 5;">
+          10:05
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:mr-3 border-l-4 md:border-l-0 md:border-r-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #fbc02d;">
+          <p class="font-bold text-base mb-1" style="color: #8b6914; font-family: 'Playfair Display', serif;">🎲 Tiếng Nói Trẻ Thơ</p>
+          <p class="text-sm mb-2" style="color: #b8860b; font-family: 'Lora', serif;">Nhóm NK-POPMART ra mắt Boardgame "Dấu chân của Sao non"</p>
+          <div class="inline-block px-2 py-1 rounded text-xs font-semibold" style="background: #fff8e1; color: #8b6914;">
+           Dự án 1
+          </div>
+         </div>
+        </div><!-- Item 8 -->
+        <div class="pl-20 md:pl-1/2 md:text-left md:pl-14 relative fade-in-up" style="animation-delay:0.8s">
+         <div class="absolute left-0 md:left-1/2 w-12 h-12 -translate-x-1/2 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #4a7fb5, #3a6d99); box-shadow: 0 0 0 4px rgba(74, 127, 181, 0.15), 0 4px 12px rgba(74, 127, 181, 0.3); z-index: 5;">
+          10:15
+         </div>
+         <div class="bg-white rounded-lg p-5 ml-2 md:ml-0 md:ml-3 border-l-4 md:border-l-4 shadow-sm hover:shadow-md transition-shadow" style="border-color: #7bafd4;">
+          <p class="font-bold text-base italic" style="color: #1e3a5f; font-family: 'Playfair Display', serif;">✨ Vang Mãi Tiếng Nói Văn Chương</p>
+          <p class="text-sm" style="color: #5a8cb8; font-family: 'Lora', serif;">Kết thúc sự kiện với tinh thần văn chương vĩnh cửu</p>
+         </div>
+        </div>
        </div>
       </div>
-     </article><!-- Project 2: Lịch -->
-     <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.55s; background: linear-gradient(145deg, #f2faf4, #e6f5ea, #edf8f0); border-color: #a3d4ad;">
-      <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
-       <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#2d8a4e" stroke-width="1"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 1 0-16 0c0 4.5 4 8 8 12z" /><circle cx="12" cy="10" r="3" />
-       </svg>
+     </div><!-- Footer for timeline page -->
+     <footer class="text-center mt-12 pb-8 fade-in-up" style="animation-delay:0.85s">
+      <div class="thick-ornament rounded-full mb-5 max-w-md mx-auto"></div>
+      <div class="flex justify-center gap-3 mb-3 text-2xl" aria-hidden="true">
+       ⏰ 📍 🎪 🎨 🎭
       </div>
-      <div class="p-6 relative z-10">
-       <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #c8e6cf; color: #276738; font-family: 'Lora', serif;">Dự án 2</span> <span class="text-xl">🌿</span>
-       </div>
-       <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #1e5631;">Lịch: Lối về sinh thái</h2>
-       <p class="text-xs italic mb-1" style="color: #1e5631; font-family: 'Dancing Script', cursive; font-size: 1rem;">Được thực hiện bởi lớp 11A1</p>
-       <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #a3d4ad, #4caf50, #a3d4ad, transparent);"></div>
-       <p class="text-sm mb-4 leading-relaxed" style="color: #2d6a3f; font-family: 'Lora', serif;">Lịch nghệ thuật kết hợp văn chương và ý thức sinh thái — mỗi tháng là một câu chuyện xanh từ trang sách đến cuộc đời.</p>
-       <div class="flex items-center justify-between">
-        <div class="flex gap-1 text-lg" aria-hidden="true">
-         🍃🌱🌳
-        </div><a href="https://ttnla1.github.io/lichA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #4caf50, #2e7d32); font-family: 'Lora', serif;"> Khám phá 
-         <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-         </svg></a>
-       </div>
-      </div>
-     </article><!-- Project 3: Kịch -->
-     <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.7s; background: linear-gradient(145deg, #f6f0fa, #ede3f5, #f3ecf9); border-color: #c4a8e0;">
-      <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
-       <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#7b3fa0" stroke-width="1"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" />
-       </svg>
-      </div>
-      <div class="p-6 relative z-10">
-       <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #dcc8ef; color: #5e2d82; font-family: 'Lora', serif;">Dự án 3</span> <span class="text-xl">🎭</span>
-       </div>
-       <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #4a1d6b;">Kịch: Tiếng vọng của những ngày qua</h2>
-       <p class="text-xs italic mb-1" style="color: #4a1d6b; font-family: 'Dancing Script', cursive; font-size: 1rem;">Được thực hiện bởi lớp 11D2</p>
-       <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #c4a8e0, #9c27b0, #c4a8e0, transparent);"></div>
-       <p class="text-sm mb-4 leading-relaxed" style="color: #5e3178; font-family: 'Lora', serif;">Sân khấu tái hiện những thanh âm xưa cũ, nơi nhân vật văn học bước ra từ trang giấy để kể lại câu chuyện của mình.</p>
-       <div class="flex items-center justify-between">
-        <div class="flex gap-1 text-lg" aria-hidden="true">
-         🎬🌙💜
-        </div><a href="https://ttnla1.github.io/kichA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #9c27b0, #6a1b9a); font-family: 'Lora', serif;"> Khám phá 
-         <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-         </svg></a>
-       </div>
-      </div>
-     </article><!-- Project 4: Tập san -->
-     <article class="project-card rounded-xl overflow-hidden newspaper-border fade-in-up relative" style="animation-delay:0.85s; background: linear-gradient(145deg, #fdf2f6, #fbe4ee, #fceff5); border-color: #e8a8c8;">
-      <div class="absolute top-3 right-3 opacity-10" aria-hidden="true">
-       <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-       </svg>
-      </div>
-      <div class="p-6 relative z-10">
-       <div class="flex items-center gap-2 mb-2"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase" style="background: #f3c4da; color: #8e1450; font-family: 'Lora', serif;">Dự án 4</span> <span class="text-xl">📚</span>
-       </div>
-       <h2 class="text-xl md:text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: #7b1040;">Tập san: Dọc miền văn học lắng nghe thanh âm phương Nam</h2>
-       <p class="text-xs italic mb-1" style="color: #7b1040; font-family: 'Dancing Script', cursive; font-size: 1rem;">Được thực hiện bởi lớp 11D2</p>
-       <div class="ornament-line mb-3" style="background: linear-gradient(90deg, transparent, #e8a8c8, #e91e63, #e8a8c8, transparent);"></div>
-       <p class="text-sm mb-4 leading-relaxed" style="color: #8e3460; font-family: 'Lora', serif;">Tập san văn chương đưa bạn đọc dọc theo miền Nam nước Việt, lắng nghe những thanh âm mộc mạc mà đậm tình.</p>
-       <div class="flex items-center justify-between">
-        <div class="flex gap-1 text-lg" aria-hidden="true">
-         🌸📖💗
-        </div><a href="https://ttnla1.github.io/tapsanA1/" target="_blank" rel="noopener noreferrer" class="btn-explore inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white" style="background: linear-gradient(135deg, #e91e63, #c2185b); font-family: 'Lora', serif;"> Khám phá 
-         <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-         </svg></a>
-       </div>
-      </div>
-     </article>
-    </div><!-- Footer -->
-    <footer class="text-center pb-8 fade-in-up" style="animation-delay:1s">
-     <div class="thick-ornament rounded-full mb-5 max-w-md mx-auto"></div>
-     <div class="flex justify-center gap-3 mb-3 text-2xl" aria-hidden="true">
-      📖 ✒️ 📝 🎓 📚
-     </div>
-     <p class="text-sm italic" style="color: #5a8cb8; font-family: 'Dancing Script', cursive; font-size: 1.1rem;">"Văn chương không chỉ để đọc, mà để cảm nhận và sống cùng"</p>
-     <p class="text-xs mt-2" style="color: #8bb8d9;">© 2025 — Dự án Văn học lớp 11A1 &amp; 11D2</p>
-    </footer>
+      <p class="text-sm italic" style="color: #5a8cb8; font-family: 'Dancing Script', cursive; font-size: 1.1rem;">"Mỗi khoảnh khắc là một câu chuyện, mỗi câu chuyện là một tác phẩm"</p>
+      <p class="text-xs mt-2" style="color: #8bb8d9;">© 2025 — Dự án Văn học lớp 11A1 &amp; 11D2</p>
+     </footer>
+    </section>
    </main>
   </div>
   <script>
@@ -259,6 +410,33 @@
   const now = new Date();
   const days = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
   dateEl.textContent = `${days[now.getDay()]}, ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
+
+  // Tab switching functionality
+  const tabProjects = document.getElementById('tab-projects');
+  const tabTimeline = document.getElementById('tab-timeline');
+  const contentProjects = document.getElementById('content-projects');
+  const contentTimeline = document.getElementById('content-timeline');
+
+  function showTab(tabName) {
+    if (tabName === 'projects') {
+      contentProjects.classList.remove('hidden');
+      contentTimeline.classList.add('hidden');
+      tabProjects.classList.add('active');
+      tabProjects.classList.remove('inactive');
+      tabTimeline.classList.remove('active');
+      tabTimeline.classList.add('inactive');
+    } else {
+      contentTimeline.classList.remove('hidden');
+      contentProjects.classList.add('hidden');
+      tabTimeline.classList.add('active');
+      tabTimeline.classList.remove('inactive');
+      tabProjects.classList.remove('active');
+      tabProjects.classList.add('inactive');
+    }
+  }
+
+  tabProjects.addEventListener('click', () => showTab('projects'));
+  tabTimeline.addEventListener('click', () => showTab('timeline'));
 
   // Element SDK
   const defaultConfig = {
@@ -357,6 +535,6 @@
       ["class_info", config.class_info || defaultConfig.class_info]
     ])
   });
-</script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dc18130975ec7ca',t:'MTc3MzQ3MjcwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9df5194da409c7ca',t:'MTc3NDAxMzcxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
